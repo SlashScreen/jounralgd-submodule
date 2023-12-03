@@ -103,7 +103,7 @@ func _set_title_color() -> void:
 ## Handles dealing with multiple output points with branches.
 func _set_is_branch(state:bool) -> void:
 	print("set is goal")
-	var conn_count = get_connection_output_count()
+	var conn_count = get_output_port_count()
 	if state:
 		if is_exit:
 			return
@@ -148,4 +148,4 @@ func _ready() -> void:
 	$IsEntryButton.toggled.connect(func(state:bool): set_slot_enabled_left(4, not state))
 	$StepName.text_changed.connect(func(x): title = x)
 	resize_request.connect(func(new_minsize:Vector2):size = new_minsize)
-	close_request.connect(_on_delete_node_button_up.bind())
+	delete_request.connect(_on_delete_node_button_up.bind())
